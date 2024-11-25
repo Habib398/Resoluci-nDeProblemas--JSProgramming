@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día de la Semana - Habib</title>
+</head>
+
+<body>
+    <p>Escribe un día de la semana en el cuadro de texto y observa cómo cambia el color del fondo:</p>
+    <form id="dayForm">
+        <input type="text" id="dayInput" placeholder="Ejemplo: Lunes" oninput="changeBackgroundColor()">
+    </form>
+
+    <script type="text/javascript">
+        function changeBackgroundColor() {
+            const input = document.getElementById("dayInput");
+            const day = input.value.trim().toLowerCase();
+            const colors = {
+                lunes: "#fce4ec", // Rosa pastel
+                martes: "#e3f2fd", // Azul cielo
+                miércoles: "#ede7f6", // Lila suave
+                miercoles: "#ede7f6", // Lila suave (sin acento)
+                jueves: "#fff8e1", // Amarillo crema
+                viernes: "#e8f5e9", // Verde menta
+                sábado: "#fbe9e7", // Naranja suave
+                sabado: "#fbe9e7", // Naranja suave (sin acento)
+                domingo: "#f9fbe7" // Verde limón
+            };
+
+            // Asignar color o usar gris por defecto
+            const backgroundColor = colors[day] || "#f5f5f5"; // Gris claro si no es válido
+            document.body.style.backgroundColor = backgroundColor;
+        }
+    </script>
+</body>
+
+</html>

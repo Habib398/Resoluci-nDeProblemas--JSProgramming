@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predicciones del Futuro</title>
+</head>
+
+<body>
+  <h1>Predicciones del Futuro</h1>
+  <p>Haz clic en un tema para recibir tu predicción:</p>
+
+  <div>
+    <button onclick="generatePrediction('finanzas')">Finanzas</button>
+    <button onclick="generatePrediction('amor')">Amor</button>
+    <button onclick="generatePrediction('trabajo')">Trabajo</button>
+  </div>
+
+  <input type="text" id="predictionBox" placeholder="Tu predicción aparecerá aquí..." readonly>
+
+  <script>
+    function generatePrediction(category) {
+      const predictions = {
+        finanzas: [
+          "Te llegará dinero inesperado.",
+          "Evita gastos innecesarios esta semana.",
+          "Tu ahorro comenzará a rendir frutos.",
+          "Un aumento salarial está cerca.",
+          "Prepárate para una oportunidad de inversión."
+        ],
+        amor: [
+          "Un nuevo amor está en camino.",
+          "Fortalece las relaciones importantes.",
+          "Dedica tiempo a quienes amas.",
+          "Una sorpresa amorosa llegará pronto.",
+          "Tu paciencia será recompensada en el amor."
+        ],
+        trabajo: [
+          "Reconocerán tu esfuerzo en el trabajo.",
+          "Un nuevo proyecto está por llegar.",
+          "Es momento de mejorar tus habilidades.",
+          "Una oportunidad laboral tocará tu puerta.",
+          "El éxito está más cerca de lo que piensas."
+        ]
+      };
+
+      const randomIndex = Math.floor(Math.random() * 5);
+      const predictionBox = document.getElementById("predictionBox");
+      predictionBox.value = predictions[category][randomIndex];
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Matrícula</title>
+</head>
+
+<body>
+    <script>
+        const CREDITO_COSTO = 360;
+        const CUOTAS = { 1: 50, 2: 75, 3: 100, 4: 100 };
+        const MAX_CREDITO_COSTO = CREDITO_COSTO * 12;
+
+        // Función para solicitar un valor con validación
+        function solicitarDato(mensaje, validacion) {
+            let dato;
+            do {
+                dato = prompt(mensaje);
+            } while (!validacion(dato));
+            return dato;
+        }
+
+        // Validaciones específicas
+        const validarNombre = (input) => input && input.trim() !== "";
+        const validarAnio = (input) => !isNaN(input) && [1, 2, 3, 4].includes(Number(input));
+        const validarCreditos = (input) => !isNaN(input) && Number(input) > 0;
+
+        // Solicitud de datos
+        const nombre = solicitarDato("Ingresa tu nombre:", validarNombre);
+        const anio = Number(
+            solicitarDato("Ingresa tu año académico:\n1) Freshman\n2) Sophomore\n3) Junior\n4) Senior:", validarAnio)
+        );
+        const creditos = Number(
+            solicitarDato("Ingresa tu número de créditos:", validarCreditos)
+        );
+
+        // Cálculo del costo
+        const costoCreditos = creditos > 12 ? MAX_CREDITO_COSTO : creditos * CREDITO_COSTO;
+        const cuotaAnual = CUOTAS[anio];
+        const total = costoCreditos + cuotaAnual;
+
+        // Mostrar el resultado
+        alert(
+            `Nombre: ${nombre}\n` +
+            `Costo de créditos: $${costoCreditos.toFixed(2)}\n` +
+            `Cuota anual: $${cuotaAnual}\n` +
+            `Total a pagar: $${total.toFixed(2)}`
+        );
+    </script>
+</body>
+
+</html>
